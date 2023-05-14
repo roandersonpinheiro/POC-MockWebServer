@@ -60,8 +60,10 @@ class GameApiServiceTest {
             .setResponseCode(HttpURLConnection.HTTP_OK)
             .setBody(MockResponseFileReader("games/games_success.json").content)
         mockWebServer.enqueue(response)
+
         // Act
         val actualResponse = service.getGames()
+
         // Assert
         assertEquals(374, actualResponse.body()?.size)
     }
@@ -74,8 +76,10 @@ class GameApiServiceTest {
             .setResponseCode(HttpURLConnection.HTTP_OK)
             .setBody(MockResponseFileReader("games/game_success_by_id.json").content)
         mockWebServer.enqueue(response)
+
         // Act
         val actualResponse = service.getGameById(1)
+
         // Assert
         assertEquals(1, actualResponse.body()?.size)
     }

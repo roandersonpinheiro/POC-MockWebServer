@@ -1,0 +1,8 @@
+{
+  "searchType": "Title",
+  "expression": "",
+  "results": [
+
+  ],
+  "errorMessage": "Invalid request. See more information at https://imdb-api.com/api#/{lang?}/API/Search/{expression}  - Search APIs: Search, SearchTitle, SearchName, SearchEpisode, SearchCompany, SearchKeyword, SearchAll-header"
+}
