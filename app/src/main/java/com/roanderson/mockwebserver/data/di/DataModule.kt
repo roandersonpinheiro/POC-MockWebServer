@@ -16,6 +16,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object DataModule {
     private const val BASE_URL =
         "https://www.freetogame.com/api/"
+
+    private const val BASE_URL2 =
+        "https://imdb-api.com/en/API/Search/"
     private const val OK_HTTP = "Ok Http"
 
     fun load() {
@@ -36,7 +39,11 @@ object DataModule {
             }
 
             single {
-                createService<GamesApiService>(get(), get())
+                createService<GamesApiService>(BASE_URL, get(), get())
+            }
+
+            single {
+                createService<GamesApiService>(BASE_URL2, get(), get())
             }
         }
     }
@@ -54,11 +61,13 @@ object DataModule {
     }
 
     private inline fun <reified T> createService(
+        url: String,
         client: OkHttpClient,
         factory: Moshi,
     ): T {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            //.baseUrl(BASE_URL)
+            .baseUrl(url)
             .client(client)
             .addConverterFactory(MoshiConverterFactory.create(factory))
             .build()
